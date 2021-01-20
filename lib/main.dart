@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:loginregister/Register.dart';
 import 'package:loginregister/bmicalci.dart';
 import 'package:loginregister/booksession.dart';
+import 'package:loginregister/finddoctor.dart';
+import 'package:loginregister/home.dart';
 import 'package:loginregister/login.dart';
 
 void main() {
@@ -22,8 +24,10 @@ class MyApp extends StatelessWidget {
       home: LoginScreen(),
       routes: <String, WidgetBuilder>{
         "/register": (BuildContext context) => RegisterScreen(),
+        "/home": (BuildContext context) => HomeScreen(),
         "/bmi": (BuildContext context) => BmiCalculator(),
-        '/booksession': (BuildContext context) => BookSession()
+        '/booksession': (BuildContext context) => BookSession(),
+        // "/finddoctor": (BuildContext context) => FindDoctor()
       },
     );
   }

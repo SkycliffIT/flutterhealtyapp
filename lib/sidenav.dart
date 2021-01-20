@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loginregister/home.dart';
-import 'package:loginregister/login.dart';
+import './home.dart';
 
 class SideNav extends StatefulWidget {
   String firstName;
@@ -23,6 +22,7 @@ class _SideNavState extends State<SideNav> {
       appBar: AppBar(
         title: Text("Home"),
       ),
+      // body: ,
       drawer: Builder(
         builder: (context) => Drawer(
           child: ListView(
@@ -50,7 +50,8 @@ class _SideNavState extends State<SideNav> {
                   leading: Icon(Icons.home),
                   title: Text("Home"),
                   onTap: () {
-                    HomeScreen(this._firstName, this._lastName, this._mailId);
+                    // HomeScreen(this._firstName, this._lastName, this._mailId);
+                    Navigator.pushNamed(context, "/home");
                   }),
               ListTile(
                 leading: Icon(Icons.message),

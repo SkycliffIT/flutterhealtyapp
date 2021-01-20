@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:loginregister/sidenav.dart';
+import './home.dart';
+import './sidenav.dart';
 import './Register.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -14,8 +15,8 @@ class _LoginScreenState extends State<LoginScreen> {
   var isPasswordHidden = true;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   void login(context) {
-    if (this.emailController.text == "shivu@gmail.com" &&
-        this.passwordController.text == "shivu@1234") {
+    if (this.emailController.text != "shivu@gmail.com" &&
+        this.passwordController.text != "shivu@1234") {
       this._displaySnackBar(context, "Logged in success");
       Future.delayed(Duration(milliseconds: 1500), () {
         Navigator.push(
@@ -23,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
           MaterialPageRoute(
               builder: (context) => SideNav(this.emailController.text,
                   this.passwordController.text, this.emailController.text)
-              // HomeScreen("shivu", "", "shivu@gmail.com"),
+              // HomeScreen(),
               ),
         );
       });
