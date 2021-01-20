@@ -115,179 +115,180 @@ class _BmiCalculatorState extends State<BmiCalculator> {
         ),
       ),
       body: Container(
-          // color: Colors.black,
-          child: Column(
-        children: [
-          Card(
-            margin: EdgeInsets.all(20.0),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16.0)),
-            shadowColor: Colors.grey,
-            elevation: 6.0,
-            child: Container(
+        // color: Colors.black,
+        child: Column(
+          children: [
+            Card(
               margin: EdgeInsets.all(20.0),
-              // height: 100,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        // color: Colors.black,
-                        borderRadius: BorderRadius.circular(20.0),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16.0)),
+              shadowColor: Colors.grey,
+              elevation: 6.0,
+              child: Container(
+                margin: EdgeInsets.all(20.0),
+                // height: 100,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          // color: Colors.black,
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0)),
+                          visualDensity:
+                              VisualDensity(horizontal: 4.0, vertical: 2.0),
+                          color: Colors.lightBlue,
+                          elevation: 20.0,
+                          child: Icon(
+                            Icons.person,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            this.gender = "Female";
+                          },
+                        ),
                       ),
+                    ),
+                    Padding(padding: EdgeInsets.only(left: 20.0)),
+                    Container(
+                      decoration: BoxDecoration(
+                          // color: Colors.black,
+                          borderRadius: BorderRadius.circular(10.0)),
                       child: RaisedButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0)),
                         visualDensity:
                             VisualDensity(horizontal: 4.0, vertical: 2.0),
-                        color: Colors.lightBlue,
+                        color: Colors.redAccent,
                         elevation: 20.0,
                         child: Icon(
-                          Icons.person,
+                          Icons.person_rounded,
                           color: Colors.white,
                         ),
                         onPressed: () {
-                          this.gender = "Female";
+                          this.gender = "Male";
                         },
                       ),
                     ),
-                  ),
-                  Padding(padding: EdgeInsets.only(left: 20.0)),
+                  ],
+                ),
+              ),
+            ),
+            Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16.0)),
+              elevation: 6.0,
+              margin: EdgeInsets.all(10.0),
+              child: Column(
+                children: [
                   Container(
-                    decoration: BoxDecoration(
-                        // color: Colors.black,
-                        borderRadius: BorderRadius.circular(10.0)),
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0)),
-                      visualDensity:
-                          VisualDensity(horizontal: 4.0, vertical: 2.0),
-                      color: Colors.redAccent,
-                      elevation: 20.0,
-                      child: Icon(
-                        Icons.person_rounded,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        this.gender = "Male";
+                    padding: EdgeInsets.all(10.0),
+                    // color: Colors.blue,
+                    child: Text(
+                      "Weight(in kg): $_weightSliderValue",
+                      style: TextStyle(color: Colors.grey[600], fontSize: 20.0),
+                    ),
+                  ),
+                  Container(
+                    child: Slider(
+                      value: _weightSliderValue,
+                      min: 0.0,
+                      max: 100.0,
+                      divisions: 20,
+                      label: _weightSliderValue.round().toString(),
+                      onChanged: (double value) {
+                        setState(() {
+                          _weightSliderValue = value;
+                          print(_weightSliderValue);
+                        });
                       },
                     ),
                   ),
+                  // Center(
+                  //   child: Card(
+                  //     child: InkWell(
+                  //       splashColor: Colors.blue.withAlpha(30),
+                  //       onTap: () {
+                  //         print('Card tapped.');
+                  //       },
+                  //       child: Container(
+                  //         width: 300,
+                  //         height: 100,
+                  //         child: Text('A card that can be tapped'),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // )
                 ],
               ),
             ),
-          ),
-          Card(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16.0)),
-            elevation: 6.0,
-            margin: EdgeInsets.all(10.0),
-            child: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.all(10.0),
-                  // color: Colors.blue,
-                  child: Text(
-                    "Weight(in kg): $_weightSliderValue",
-                    style: TextStyle(color: Colors.grey[600], fontSize: 20.0),
+            Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16.0)),
+              elevation: 6.0,
+              margin: EdgeInsets.all(10.0),
+              child: Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(10.0),
+                    // color: Colors.blue,
+                    child: Text(
+                      "Height(in cm): $_heightSliderValue",
+                      style: TextStyle(color: Colors.grey[600], fontSize: 20.0),
+                    ),
                   ),
-                ),
-                Container(
-                  child: Slider(
-                    value: _weightSliderValue,
-                    min: 0.0,
-                    max: 100.0,
-                    divisions: 20,
-                    label: _weightSliderValue.round().toString(),
-                    onChanged: (double value) {
-                      setState(() {
-                        _weightSliderValue = value;
-                        print(_weightSliderValue);
-                      });
-                    },
+                  Container(
+                    child: Slider(
+                      activeColor: Colors.orange,
+                      value: _heightSliderValue,
+                      min: 0.0,
+                      max: 100.0,
+                      divisions: 20,
+                      label: _heightSliderValue.round().toString(),
+                      onChanged: (double value) {
+                        setState(() {
+                          _heightSliderValue = value;
+                          print(_heightSliderValue);
+                        });
+                      },
+                    ),
                   ),
-                ),
-                // Center(
-                //   child: Card(
-                //     child: InkWell(
-                //       splashColor: Colors.blue.withAlpha(30),
-                //       onTap: () {
-                //         print('Card tapped.');
-                //       },
-                //       child: Container(
-                //         width: 300,
-                //         height: 100,
-                //         child: Text('A card that can be tapped'),
-                //       ),
-                //     ),
-                //   ),
-                // )
-              ],
+                  // Center(
+                  //   child: Card(
+                  //     child: InkWell(
+                  //       splashColor: Colors.blue.withAlpha(30),
+                  //       onTap: () {
+                  //         print('Card tapped.');
+                  //       },
+                  //       child: Container(
+                  //         width: 300,
+                  //         height: 100,
+                  //         child: Text('A card that can be tapped'),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // )
+                ],
+              ),
             ),
-          ),
-          Card(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16.0)),
-            elevation: 6.0,
-            margin: EdgeInsets.all(10.0),
-            child: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.all(10.0),
-                  // color: Colors.blue,
-                  child: Text(
-                    "Height(in cm): $_heightSliderValue",
-                    style: TextStyle(color: Colors.grey[600], fontSize: 20.0),
-                  ),
-                ),
-                Container(
-                  child: Slider(
-                    activeColor: Colors.orange,
-                    value: _heightSliderValue,
-                    min: 0.0,
-                    max: 100.0,
-                    divisions: 20,
-                    label: _heightSliderValue.round().toString(),
-                    onChanged: (double value) {
-                      setState(() {
-                        _heightSliderValue = value;
-                        print(_heightSliderValue);
-                      });
-                    },
-                  ),
-                ),
-                // Center(
-                //   child: Card(
-                //     child: InkWell(
-                //       splashColor: Colors.blue.withAlpha(30),
-                //       onTap: () {
-                //         print('Card tapped.');
-                //       },
-                //       child: Container(
-                //         width: 300,
-                //         height: 100,
-                //         child: Text('A card that can be tapped'),
-                //       ),
-                //     ),
-                //   ),
-                // )
-              ],
+            Padding(padding: EdgeInsets.all(10.0)),
+            MaterialButton(
+              elevation: 6.0,
+              onPressed: bmiCalci,
+              color: Colors.blue,
+              padding: EdgeInsets.all(10.0),
+              child: Icon(
+                Icons.check,
+                color: Colors.white,
+              ),
             ),
-          ),
-          Padding(padding: EdgeInsets.all(10.0)),
-          MaterialButton(
-            elevation: 6.0,
-            onPressed: bmiCalci,
-            color: Colors.blue,
-            padding: EdgeInsets.all(10.0),
-            child: Icon(
-              Icons.check,
-              color: Colors.white,
-            ),
-          ),
-        ],
-      )),
+          ],
+        ),
+      ),
     );
   }
 }

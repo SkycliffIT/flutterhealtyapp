@@ -70,6 +70,20 @@ class _SideNavState extends State<SideNav> {
                 },
               ),
               ListTile(
+                leading: Icon(Icons.design_services),
+                title: Text("Responsive"),
+                onTap: () {
+                  Navigator.pushNamed(context, "/responsiveui");
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.design_services),
+                title: Text("Today Design"),
+                onTap: () {
+                  Navigator.pushNamed(context, "/details");
+                },
+              ),
+              ListTile(
                 leading: Icon(Icons.logout),
                 title: Text("LogOut"),
                 onTap: () {

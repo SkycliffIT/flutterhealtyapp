@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:loginregister/Register.dart';
-import 'package:loginregister/bmicalci.dart';
-import 'package:loginregister/booksession.dart';
-import 'package:loginregister/finddoctor.dart';
-import 'package:loginregister/home.dart';
-import 'package:loginregister/login.dart';
+import './Register.dart';
+import './bmicalci.dart';
+import './booksession.dart';
+import './finddoctor.dart';
+import './home.dart';
+import './login.dart';
+import './responsiveui.dart';
+
+import './details.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,7 +30,8 @@ class MyApp extends StatelessWidget {
         "/home": (BuildContext context) => HomeScreen(),
         "/bmi": (BuildContext context) => BmiCalculator(),
         '/booksession': (BuildContext context) => BookSession(),
-        // "/finddoctor": (BuildContext context) => FindDoctor()
+        "/responsiveui": (BuildContext context) => Responsiveui(),
+        "/details": (BuildContext context) => Details()
       },
     );
   }
