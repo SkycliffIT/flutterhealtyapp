@@ -45,19 +45,156 @@ class Responsiveui extends StatelessWidget {
 
   Widget _buildWidgetContainerLargeScreen(deviceWidth, deviceHeight) {
     return Center(
-        child: Container(
-      width: deviceWidth / 2,
-      height: deviceHeight / 2,
-      color: Colors.orange,
-    ));
+      child: Container(
+        // width: deviceWidth - 100,
+        // height: deviceHeight / 2,
+        color: Colors.orange,
+        child: GridView.count(
+          primary: false,
+          padding: const EdgeInsets.all(20),
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          crossAxisCount: 2,
+          children: <Widget>[
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: const Text(
+                  "He'd have you all unravel at the",
+                  style: TextStyle(fontSize: 40.0),
+                ),
+              ),
+              color: Colors.teal[100],
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: const Text(
+                  'Heed not the rabble',
+                  style: TextStyle(fontSize: 40.0),
+                ),
+              ),
+              color: Colors.teal[200],
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: const Text(
+                  'Sound of screams but the',
+                  style: TextStyle(fontSize: 40.0),
+                ),
+              ),
+              color: Colors.teal[300],
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: const Text(
+                  'Who scream',
+                  style: TextStyle(fontSize: 40.0),
+                ),
+              ),
+              color: Colors.teal[400],
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: const Text(
+                  'Revolution is coming...',
+                  style: TextStyle(fontSize: 40.0),
+                ),
+              ),
+              color: Colors.teal[500],
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: const Text(
+                  'Revolution, they...',
+                  style: TextStyle(fontSize: 40.0),
+                ),
+              ),
+              color: Colors.teal[600],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget _buildWidgetContainerNormalScreen(deviceWidth, deviceHeight) {
     return Center(
       child: Container(
-        height: deviceHeight / 2,
-        width: deviceWidth / 2,
-        color: Colors.blue,
+        color: Colors.orange,
+        child: GridView.count(
+          primary: false,
+          padding: const EdgeInsets.all(20),
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          crossAxisCount: 2,
+          children: <Widget>[
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: const Text(
+                  "He'd have you all unravel at the",
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
+              color: Colors.teal[100],
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: const Text(
+                  'Heed not the rabble',
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
+              color: Colors.teal[200],
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: const Text(
+                  'Sound of screams but the',
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
+              color: Colors.teal[300],
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: const Text(
+                  'Who scream',
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
+              color: Colors.teal[400],
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: const Text(
+                  'Revolution is coming...',
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
+              color: Colors.teal[500],
+            ),
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: Center(
+                child: const Text(
+                  'Revolution, they...',
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
+              color: Colors.teal[600],
+            ),
+          ],
+        ),
       ),
     );
   }

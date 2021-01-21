@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loginregister/sidenav.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterScreen extends StatefulWidget {
   @override
@@ -45,10 +46,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
     Navigator.of(context).pop();
   }
 
-  void register() {
+  void register() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
     if (this.firstNameController.text.isNotEmpty &&
         this.lastNameController.text.isNotEmpty &&
-        this.emailController.text.isNotEmpty) {
+        this.emailController.text.isNotEmpty &&
+        this.passwordController.text.isNotEmpty) {
+      pref.setString("userInfo",
+          '{"userName": "${firstNameController.text}", "email": "${emailController.text}","password": "${passwordController.text}" }');
       Navigator.push(
         context,
         MaterialPageRoute(

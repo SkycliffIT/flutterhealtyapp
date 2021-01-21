@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:loginregister/model/user_info.dart';
 import './home.dart';
 import './sidenav.dart';
 import './Register.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -14,10 +18,53 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController forgotpasswordController = TextEditingController();
   var isPasswordHidden = true;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+  // Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  @override
+  void initState() {
+    // SharedPreferences pref =
+    //     SharedPreferences.getInstance() as SharedPreferences;
+    // print(pref.getString("userInfo"));
+    super.initState();
+    getUserInfo();
+  }
+
+  getUserInfo() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String userInfoJsonString = prefs.getString('userInfo');
+    // _prefs.then((SharedPreferences prefs) => prefs.getString("userInfo"));
+    if (userInfoJsonString != null) {
+      var userInfoJson = jsonDecode(userInfoJsonString);
+      // print(userInfoJson);
+      var userInfo = UserInformation.fromJson(userInfoJson);
+      // this.emailController.text = userInfo.email;
+      // this.passwordController.text = userInfo.password;
+      //  this.
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => SideNav(this.emailController.text,
+                  this.passwordController.text, this.emailController.text)));
+    }
+    setState(() {
+      // this.emailController.text =
+    });
+  }
+
+  setUserInfo() async {
+    setState(() {
+      this.emailController.text == "shivu@gmail.com";
+      this.passwordController.text == "shivu@1234";
+    });
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString("userInfo",
+        '{"userName": "", "email": "${emailController.text}","password": "${passwordController.text}" }');
+  }
+
   void login(context) {
-    if (this.emailController.text != "shivu@gmail.com" &&
-        this.passwordController.text != "shivu@1234") {
+    if (this.emailController.text == "shivu@gmail.com" &&
+        this.passwordController.text == "shivu@1234") {
       this._displaySnackBar(context, "Logged in success");
+      this.setUserInfo();
       Future.delayed(Duration(milliseconds: 1500), () {
         Navigator.push(
           context,
@@ -28,6 +75,9 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
         );
       });
+    } else {
+      this._displaySnackBar(context, "Register first");
+      // Navigator.pushNamed(context, '/register');
     }
   }
 

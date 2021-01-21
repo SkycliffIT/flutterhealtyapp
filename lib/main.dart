@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loginregister/sidenav.dart';
 import './Register.dart';
 import './bmicalci.dart';
 import './booksession.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
       home: LoginScreen(),
       routes: <String, WidgetBuilder>{
         "/register": (BuildContext context) => RegisterScreen(),
-        "/home": (BuildContext context) => HomeScreen(),
+        "/home": (BuildContext context) => SideNav("", "", ""),
         "/bmi": (BuildContext context) => BmiCalculator(),
         '/booksession': (BuildContext context) => BookSession(),
         "/responsiveui": (BuildContext context) => Responsiveui(),

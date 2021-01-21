@@ -15,6 +15,9 @@ class _BookSessionState extends State<BookSession> {
 
   @override
   Widget build(BuildContext context) {
+    var mediaQuery = MediaQuery.of(context);
+    var deviceHeight = mediaQuery.size.height;
+    var deviceWidth = mediaQuery.size.width;
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text("Book Session")),

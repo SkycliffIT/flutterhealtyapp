@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:loginregister/doctor.dart';
 import './home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SideNav extends StatefulWidget {
   String firstName;
@@ -22,7 +24,7 @@ class _SideNavState extends State<SideNav> {
       appBar: AppBar(
         title: Text("Home"),
       ),
-      // body: ,
+      body: HomeScreen(),
       drawer: Builder(
         builder: (context) => Drawer(
           child: ListView(
@@ -86,7 +88,10 @@ class _SideNavState extends State<SideNav> {
               ListTile(
                 leading: Icon(Icons.logout),
                 title: Text("LogOut"),
-                onTap: () {
+                onTap: () async {
+                  SharedPreferences pref =
+                      await SharedPreferences.getInstance();
+                  pref.remove("userInfo");
                   Navigator.pushNamedAndRemoveUntil(context, "/", (r) => false);
                 },
               ),
