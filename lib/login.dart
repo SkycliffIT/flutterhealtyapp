@@ -31,14 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
   getUserInfo() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String userInfoJsonString = prefs.getString('userInfo');
-    // _prefs.then((SharedPreferences prefs) => prefs.getString("userInfo"));
     if (userInfoJsonString != null) {
-      var userInfoJson = jsonDecode(userInfoJsonString);
-      // print(userInfoJson);
-      var userInfo = UserInformation.fromJson(userInfoJson);
-      // this.emailController.text = userInfo.email;
-      // this.passwordController.text = userInfo.password;
-      //  this.
       Navigator.push(
           context,
           MaterialPageRoute(
@@ -65,20 +58,76 @@ class _LoginScreenState extends State<LoginScreen> {
         this.passwordController.text == "shivu@1234") {
       this._displaySnackBar(context, "Logged in success");
       this.setUserInfo();
-      Future.delayed(Duration(milliseconds: 1500), () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => SideNav(this.emailController.text,
-                  this.passwordController.text, this.emailController.text)
-              // HomeScreen(),
-              ),
-        );
-      });
+      Future.delayed(
+        Duration(milliseconds: 1500),
+        () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => SideNav(this.emailController.text,
+                    this.passwordController.text, this.emailController.text)
+                // HomeScreen(),
+                ),
+          );
+        },
+      );
     } else {
       this._displaySnackBar(context, "Register first");
       // Navigator.pushNamed(context, '/register');
     }
+  }
+
+  confirm() {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => AlertDialog(
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+        backgroundColor: Colors.white,
+        title: Text(
+          "Alert Dialog",
+          style: TextStyle(fontSize: 20.0),
+          textAlign: TextAlign.center,
+        ),
+        actions: <Widget>[
+          Container(
+            margin: EdgeInsets.only(left: 40.0),
+            child: MaterialButton(
+              onPressed: closeDialog,
+              child: Icon(
+                Icons.close,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          MaterialButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SideNav(
+                    this.emailController.text,
+                    this.passwordController.text,
+                    this.emailController.text,
+                  ),
+                ),
+              );
+            },
+            child: Text(
+              "Ok",
+              style: TextStyle(color: Colors.white, fontSize: 20.0),
+            ),
+          )
+        ],
+        content: Container(
+          height: 120.0,
+          child: Column(
+            children: [],
+          ),
+        ),
+      ),
+    );
   }
 
   forgotPassword() {

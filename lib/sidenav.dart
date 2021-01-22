@@ -86,6 +86,13 @@ class _SideNavState extends State<SideNav> {
                 },
               ),
               ListTile(
+                leading: Icon(Icons.info_rounded),
+                title: Text("AboutUs"),
+                onTap: () {
+                  Navigator.pushNamed(context, "/aboutus");
+                },
+              ),
+              ListTile(
                 leading: Icon(Icons.logout),
                 title: Text("LogOut"),
                 onTap: () async {

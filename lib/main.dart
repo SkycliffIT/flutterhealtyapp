@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:loginregister/sidenav.dart';
+import 'package:loginregister/doctordetails.dart';
+import './aboutus.dart';
+import './sidenav.dart';
 import './Register.dart';
 import './bmicalci.dart';
 import './booksession.dart';
-import './finddoctor.dart';
-import './home.dart';
 import './login.dart';
 import './responsiveui.dart';
-
 import './details.dart';
 
 void main() {
@@ -32,7 +31,8 @@ class MyApp extends StatelessWidget {
         "/bmi": (BuildContext context) => BmiCalculator(),
         '/booksession': (BuildContext context) => BookSession(),
         "/responsiveui": (BuildContext context) => Responsiveui(),
-        "/details": (BuildContext context) => Details()
+        "/doctordetails": (BuildContext context) => DoctorDetails(),
+        "/aboutus": (BuildContext context) => AboutUs()
       },
     );
   }
